@@ -1,0 +1,9 @@
+{
+    "cta": "Learn your next steps for receiving $120 for groceries this summer",
+    "about": "The Nebraska Summer EBT (S-EBT) Eligibility Checker will ask you a few questions about your child to help you understand if you will receive $120 automatically or if you will need to apply.",
+    "level_set_header": "Before you get started on this form",
+    "level_set_body": "It will take most people less than two minutes to complete this form. You will not need to provide any sensitive information about your child, but you may be asked if your child: \n <ul> \n <li>is enrolled in programs like SNAP<\/li> \n <li>Has been approved for free or reduced-price school meals<\/li> \n <li>Has a household income that is eligible to receive Summer EBT<\/li> \n <\/ul> \n <br /> \n\n This form does <em>not<\/em> save your answers, and your answers will not be shared with anyone.",
+    "instructions_header": "How to complete this form",
+    "instructions_body": "For each question, tap/click the radio button ( <input type=\"radio\" /> ) or checkboxes ( <input type=\"checkbox\" /> ) that best describe your child, and then tap/click the \"next question\" button. If you need to change your answer to a previous question, tap/click the \"go back\" button.",
+    "get_started": "Tap or click the \"next question\" button to get started!"
+}

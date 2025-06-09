@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="title">Welcome to Our Website</title>
+</head>
+
+<body>
+    <select id="language-selector">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+    </select>
+
+    <h1 data-i18n="cta"></h1>
+    <p data-i18n="about"></p>
+    
+    <h2 data-i18n="level_set_header"></h2>
+    <p data-i18n="level_set_body"></p>
+
+    <h2 data-i18n="instructions_header"></h2>
+    <p data-i18n="instructions_body"></p>
+
+    <h2 data-i18n="get_started"></h2>
+</body>
+
+<!-- JS BELOW -->
+
+<script type="text/javascript">
+
+    const languageSelector = document.getElementById("language-selector");
+    let translations = {};
+
+    async function loadLanguage(lang) {
+        try {
+            const response = await fetch(`intro[${lang}].json`);
+            translations = await response.json();
+            updateText();
+        } catch (error) {
+            console.error(`Error loading ${lang} language file:`, error);
+        }
+    }
+
+    function updateText() {
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+            const keys = el.getAttribute("data-i18n").split('.');
+            let text = translations;
+            for (let key of keys) {
+                if (text[key]) {
+                    text = text[key];
+                } else {
+                    text = null;
+                    break;
+                }
+            }
+            if (text) {
+                el.innerText = text;
+            }
+        });
+    }
+
+    languageSelector.addEventListener("change", (e) => {
+        const selectedLang = e.target.value;
+        loadLanguage(selectedLang);
+    });
+
+    // Load default language
+    window.addEventListener("DOMContentLoaded", () => {
+        const defaultLang = "en";    // or detect from browser
+        languageSelector.value = defaultLang;
+        loadLanguage(defaultLang);
+    });
+
+</script>
+
+</html>
