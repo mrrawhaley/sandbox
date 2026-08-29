@@ -113,6 +113,41 @@ the Q&A block.
   risk for this prototype; don't add file locking or other machinery to
   guard against it.
 
+## 6. Confirm before sharing the file with other users
+
+The research file lives in a shared repository other people can see. After
+writing to it in step 5, ask the user whether to share this run's changes
+— **in plain, non-technical language, never using words like "commit,"
+"push," "repository," or "branch."** Pick the phrasing based on what
+actually happened in step 5:
+
+- **New file created (no prior file for this state):** ask something like
+  *"Do you want to save this [State] research file so others can see
+  it?"*
+- **Existing file, new questions appended:** ask something like *"Do you
+  want to update the [State] research file with these new answers so
+  others can see them?"*
+- **Existing file, nothing new appended (every question was already on
+  file):** don't ask anything — there's nothing new to share.
+
+If the user says yes, run (adjust the commit message to name the state
+and what changed, e.g. "Add Ohio Summer EBT research" or "Update Ohio
+Summer EBT research with N new answers"):
+
+```
+git add summer-ebt-research/<state-slug>-summer-ebt-qa.md
+git commit -m "<Add|Update> <State> Summer EBT research"
+git push
+```
+
+If `git push` fails (e.g. no upstream configured yet), fall back to
+`git push -u origin <current-branch-name>`. If the push still fails for
+any reason, tell the user in plain language that the file is saved on
+their computer but couldn't be shared yet, and why.
+
+If the user says no, leave the file as an uncommitted local file and say
+so — don't commit or push without a yes.
+
 ## Example output file structure
 
 ```markdown
